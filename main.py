@@ -57,9 +57,7 @@ nb_file_name = 'notebook.json'
 while True:
     notebook = create_notebook(nb_file_name)
     show_notes(notebook)
-    
     command = get_command()
-
     command_center(note_id, command, nb_file_name)
    
     note_id += 1
