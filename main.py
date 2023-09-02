@@ -1,6 +1,5 @@
 import json
-
-notebook = {}
+import os
 
 message = """
 1 --> add a note
@@ -11,6 +10,14 @@ message = """
 """
 note_id = 0
 while True:
+    if not os.path.exists('notebook.json'):
+        notebook = {}
+        with open('notebook.json', 'w') as f:
+            json.dump(notebook, f)
+    else:
+        with open('notebook.json', 'r') as f:
+            notebook = json.load(f)
+    print(notebook)
     print(message, flush=True)
     command = input('1/2/3/4/5\n')
     if command == '1':
