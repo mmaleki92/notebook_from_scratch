@@ -18,7 +18,7 @@ while True:
         with open('notebook.json', 'r') as f:
             notebook = json.load(f)
     print(notebook)
-    print(message, flush=True)
+    print(message)
     command = input('1/2/3/4/5\n')
     if command == '1':
         note = {}
@@ -30,6 +30,8 @@ while True:
         if note_id_edit in notebook:
             notebook[note_id_edit]['title'] = input('title:')
             notebook[note_id_edit]['text'] = input('text:')
+    elif command == '3':
+        print(notebook)
     elif command=='5':
         with open('notebook.json', 'w') as f:
             json.dump(notebook, f)
