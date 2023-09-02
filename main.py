@@ -32,6 +32,11 @@ while True:
             notebook[note_id_edit]['text'] = input('text:')
     elif command == '3':
         print(notebook)
+    elif command == '4':
+        delete_id = input('give me the id to delete')
+        sure = input('are you sure? (y/n)')
+        if sure == 'y':
+            del notebook[delete_id]
     elif command=='5':
         with open('notebook.json', 'w') as f:
             json.dump(notebook, f)
