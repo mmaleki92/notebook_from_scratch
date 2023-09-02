@@ -1,13 +1,7 @@
 import json
 import os
 
-message = """
-1 --> add a note
-2 --> edit a note
-3 --> show notes
-4 --> delete a note
-5 --> save to json
-"""
+
 def create_notebook(nb_file_name):
     if not os.path.exists(nb_file_name):
         notebook = {}
@@ -46,13 +40,26 @@ def show_notes(notebook):
         print('Text:', notebook[id]['text'][0:10])
         print('-'*10)
 
+def get_command():
+    message = """
+    1 --> add a note
+    2 --> edit a note
+    3 --> show notes
+    4 --> delete a note
+    5 --> save to json
+    """
+    print(message)
+    command = input('1/2/3/4/5\n')
+    return command
+
 note_id = 0
 nb_file_name = 'notebook.json'
 while True:
     notebook = create_notebook(nb_file_name)
     show_notes(notebook)
-    print(message)
-    command = input('1/2/3/4/5\n')
+    
+    command = get_command()
+
     command_center(note_id, command, nb_file_name)
    
     note_id += 1
